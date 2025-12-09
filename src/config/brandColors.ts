@@ -2,7 +2,7 @@
  * Prometheus Agentic Growth Solutions - The Boss Brand Colors
  *
  * Use these constants for consistent branding across the application.
- * These colors match the CSS variables in styles/prometheus-theme.css
+ * These colors match the CSS variables in styles/styles.css
  *
  * Typography:
  * - Headings: Ubuntu (matches desktop version for cross-platform consistency)

@@ -1,14 +1,16 @@
 /**
- * Prometheus Agentic Growth Solutions - The Boss Brand Theme
+ * The Boss - Prometheus Agentic Growth Solutions
+ * Consolidated Design System Styles
  * 
- * This file overrides the semantic color system to apply Prometheus branding
- * throughout the entire application automatically.
+ * This file contains all custom theme variables and component styles
+ * for The Boss application in a single location.
  */
 
+/* ==================== */
+/* Theme Variables */
+/* ==================== */
 @theme {
-  /* ==================== */
   /* Prometheus Brand Color Palette */
-  /* ==================== */
   --color-prometheus-navy: #0a192d;
   --color-prometheus-yellow: #ffdd00;
   --color-prometheus-orange: #ff5500;
@@ -26,22 +28,14 @@
   --font-family-heading: 'Ubuntu', 'Inter', sans-serif;
   --font-family-body: 'Roboto', 'Inter', sans-serif;
 
-  /* ==================== */
-  /* Override Semantic Colors with Prometheus Branding */
-  /* ==================== */
-  
-  /* Primary color - Used for main actions, highlights */
+  /* Semantic Colors - Prometheus Branding */
   --color-primary: oklch(from #0a192d l c h);
   --color-primary-hover: oklch(from #0f2440 l c h);
-  
-  /* Accent color - Used for links, secondary actions */
   --color-accent: oklch(from #00a3a3 l c h);
-  
-  /* Destructive/Error color */
   --color-destructive: oklch(from #ff4d4d l c h);
   --color-destructive-hover: oklch(from #ff3333 l c h);
   
-  /* Brand color scale - Override with Prometheus Navy */
+  /* Brand Color Scale */
   --color-brand-50: oklch(0.98 0.015 214);
   --color-brand-100: oklch(0.96 0.034 214);
   --color-brand-200: oklch(0.91 0.073 214);
@@ -55,8 +49,10 @@
   --color-brand-950: oklch(0.08 0.025 214);
 }
 
+/* ==================== */
+/* Light Mode Theme */
+/* ==================== */
 @layer theme {
-  /* Light mode (default) */
   :root {
     /* Primary - Prometheus Navy */
     --color-primary: oklch(from #0a192d l c h);
@@ -78,7 +74,7 @@
     --color-brand-300: oklch(from #00a3a3 l c h);
   }
 
-  /* Dark mode */
+  /* Dark Mode - Media Query */
   @media (prefers-color-scheme: dark) {
     :root {
       /* Primary - Prometheus Light Blue (better for dark mode) */
@@ -102,7 +98,7 @@
     }
   }
 
-  /* Manual dark class override */
+  /* Dark Mode - Manual Class Override */
   .dark {
     /* Primary - Prometheus Light Blue (better for dark mode) */
     --color-primary: oklch(from #4d9fff l c h);
@@ -122,5 +118,67 @@
     /* Brand colors for components */
     --color-brand-500: oklch(from #4d9fff l c h);
     --color-brand-300: oklch(from #00a3a3 l c h);
+  }
+}
+
+/* ==================== */
+/* Component Styles */
+/* ==================== */
+@layer components {
+  /* Primary badge: border + background + text color */
+  .primary-badge {
+    @apply border-primary/30 bg-primary/5 text-primary dark:border-brand-300/30 dark:bg-brand-300/5 dark:text-brand-300;
+  }
+
+  /* Primary container: border + background */
+  .primary-container {
+    @apply border-primary/30 bg-primary/15 dark:border-brand-300/30 dark:bg-brand-300/5;
+  }
+
+  /* User message bubble - WCAG AA compliant colors */
+  .secondary-container {
+    /* Light mode: Navy text on light yellow background (contrast ratio 7.5:1) */
+    background-color: #FFF9E6;
+    border-color: rgba(10, 25, 45, 0.2);
+    color: #0a192d;
+  }
+
+  :root.dark .secondary-container {
+    /* Dark mode: Light text on navy background (contrast ratio 12:1) */
+    background-color: #0f2440;
+    border-color: rgba(77, 159, 255, 0.3);
+    color: #f8f8f8;
+  }
+
+  /* Assistant message bubble - WCAG AA compliant colors with better contrast */
+  .assistant-container {
+    /* Light mode: Dark text on light turquoise/blue background (contrast ratio 8:1) */
+    background-color: #E6F4FF;
+    border-color: rgba(77, 159, 255, 0.3);
+    color: #0a192d;
+  }
+
+  :root.dark .assistant-container {
+    /* Dark mode: Light text on darker blue background (contrast ratio 10:1) */
+    background-color: #1a2f45;
+    border-color: rgba(77, 159, 255, 0.4);
+    color: #f8f8f8;
+  }
+
+  .message-input-container {
+    @apply border-primary/30 bg-primary/10 dark:border-brand-300/30 dark:bg-brand-300/5;
+  }
+
+  /* Primary text color */
+  .primary-text {
+    @apply text-primary dark:text-brand-300;
+  }
+
+  .primary-border {
+    @apply border-primary dark:border-brand-300;
+  }
+
+  .primary-background {
+    @apply bg-primary dark:bg-brand-300;
   }
 }
