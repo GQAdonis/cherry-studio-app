@@ -4,11 +4,12 @@
  * This file defines all user preferences and their default values.
  * Preferences are stored in the SQLite database and can be synchronized across devices.
  *
- * Total preference items: 10
+ * Total preference items: 15
  * - User configuration: 3
  * - UI configuration: 1
  * - Topic state: 1
  * - Web search configuration: 4
+ * - Vertex AI configuration: 4
  * - App state: 2
  */
 
@@ -24,10 +25,10 @@ export const DefaultPreferences: PreferenceSchemas = {
   default: {
     // === User Configuration ===
     // User avatar image path or URL
-    'user.avatar': '',
+    'user.avatar': require('@/assets/images/logo.png'),
 
     // User display name shown in the application
-    'user.name': 'Cherry Studio',
+    'user.name': 'The Boss',
 
     // Unique user identifier (UUID)
     // Will be generated during seeding with actual UUID
@@ -62,6 +63,19 @@ export const DefaultPreferences: PreferenceSchemas = {
     // undefined means no limit
     'websearch.content_limit': 2000,
 
+    // === Vertex AI Configuration ===
+    // Service Account Client Email for Vertex AI authentication
+    'vertexai.service_account.client_email': '',
+
+    // Service Account Private Key for Vertex AI authentication
+    'vertexai.service_account.private_key': '',
+
+    // Google Cloud Project ID for Vertex AI
+    'vertexai.project_id': '',
+
+    // Vertex AI service location/region (e.g., us-central1)
+    'vertexai.location': '',
+
     // Current version of the app data initialization
     // Used to run incremental initialization migrations when new data is added
     'app.initialization_version': 0,
@@ -91,6 +105,10 @@ export const PreferenceDescriptions: Record<keyof PreferenceSchemas['default'], 
   'websearch.max_results': 'Maximum number of search results (1-20)',
   'websearch.override_search_service': 'Use custom search service configuration',
   'websearch.content_limit': 'Content length limit for search results (characters)',
+  'vertexai.service_account.client_email': 'Vertex AI Service Account client email',
+  'vertexai.service_account.private_key': 'Vertex AI Service Account private key',
+  'vertexai.project_id': 'Google Cloud Project ID for Vertex AI',
+  'vertexai.location': 'Vertex AI service location/region',
   'app.initialization_version': 'Current version of app data initialization migrations',
   'app.dismissed_update_version': 'Version number that user chose to skip updating',
   'app.developer_mode': 'Enable developer mode for advanced features'

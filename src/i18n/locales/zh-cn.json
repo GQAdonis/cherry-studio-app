@@ -105,7 +105,7 @@
       },
       "think": "正在思考 {{seconds}} 秒",
       "think_expand": "点击看穿我的心思",
-      "title": "欢迎使用 Cherry Studio!",
+      "title": "欢迎使用 The Boss!",
       "topics": {
         "list": "列表",
         "search": {
@@ -120,7 +120,7 @@
       "camera": "相机",
       "cancel": "取消",
       "check": "开始检查",
-      "cherry_studio": "Cherry Studio",
+      "cherry_studio": "The Boss",
       "cherry_studio_description": "强大的 AI 生产力助手",
       "clear_all": "清除全部",
       "close": "关闭",
@@ -137,7 +137,7 @@
       "file": "文件",
       "generateImage": "创建图片",
       "go_to_settings": "前往设置",
-      "import_from_cherry_studio": "从 Cherry Studio 导入",
+      "import_from_cherry_studio": "从 The Boss 导入",
       "language": "语言",
       "last_month": "上月",
       "last_week": "上周",
@@ -162,7 +162,7 @@
       "select_all": "全选",
       "select_text": "选择文本",
       "source": "来源",
-      "start": "开始使用Cherry Studio App 🎉",
+      "start": "开始使用 The Boss 🎉",
       "stop": "停止",
       "this_week": "本周",
       "today": "今天",
@@ -171,7 +171,7 @@
       "visit": "访问",
       "websearch": "网络搜索",
       "welcome": {
-        "message1": "欢迎使用Cherry Studio 🎉",
+        "message1": "欢迎使用 The Boss 🎉",
         "message2": "开始创作，享受无限可能！"
       },
       "yesterday": "昨天"
@@ -181,7 +181,7 @@
       "availableTools": "可用工具",
       "backup": {
         "file_format": "备份文件格式错误",
-        "file_invalid": "备份文件无效，需要在Cherry Studio中通过导出到移动端获取",
+        "file_invalid": "备份文件无效，需要在 The Boss 中通过导出到移动端获取",
         "title": "备份失败"
       },
       "cause": "原因",
@@ -553,7 +553,7 @@
           "scan_qr_code": {
             "connecting": "正在连接...",
             "connection_error_message": "连接失败，请检查局域网状态并重新扫描二维码。",
-            "description": "请使用Cherry Studio扫码",
+            "description": "请使用 The Boss 扫码",
             "disconnected_message": "Landrop 连接已断开，请重试。",
             "disconnected_title": "连接已断开",
             "grant_permission": "授予权限",
@@ -961,7 +961,7 @@
       "error": "语音识别出错",
       "not_available": "语音识别不可用",
       "permission_denied": "麦克风权限被拒绝",
-      "permission_denied_message": "请在设置中允许 Cherry Studio 访问麦克风",
+      "permission_denied_message": "请在设置中允许 The Boss 访问麦克风",
       "start": "开始语音输入",
       "stop": "停止语音输入"
     }

@@ -105,7 +105,7 @@
       },
       "think": "思考中，{{seconds}}秒",
       "think_expand": "點擊讀懂我的心",
-      "title": "歡迎使用 Cherry Studio!",
+      "title": "歡迎使用 The Boss!",
       "topics": {
         "list": "清單",
         "search": {
@@ -120,7 +120,7 @@
       "camera": "相機",
       "cancel": "取消",
       "check": "開始檢查",
-      "cherry_studio": "Cherry Studio",
+      "cherry_studio": "The Boss",
       "cherry_studio_description": "強大的 AI 生產力助手",
       "clear_all": "清除全部",
       "close": "關閉",
@@ -137,7 +137,7 @@
       "file": "檔案",
       "generateImage": "建立圖片",
       "go_to_settings": "前往設定",
-      "import_from_cherry_studio": "從 Cherry Studio 導入",
+      "import_from_cherry_studio": "從 The Boss 導入",
       "language": "語言",
       "last_month": "上個月",
       "last_week": "上週",
@@ -162,7 +162,7 @@
       "select_all": "全選",
       "select_text": "選擇文本",
       "source": "來源",
-      "start": "開始使用Cherry Studio App 🎉",
+      "start": "開始使用 The Boss 🎉",
       "stop": "停止",
       "this_week": "本週",
       "today": "今天",
@@ -171,7 +171,7 @@
       "visit": "訪問",
       "websearch": "網路搜尋",
       "welcome": {
-        "message1": "歡迎使用 Cherry Studio",
+        "message1": "歡迎使用 The Boss",
         "message2": "開始創作，享受無限可能！"
       },
       "yesterday": "昨天"
@@ -181,7 +181,7 @@
       "availableTools": "可用工具",
       "backup": {
         "file_format": "備份檔案格式錯誤",
-        "file_invalid": "備份檔案無效，需在Cherry Studio中透過匯出至行動裝置取得",
+        "file_invalid": "備份檔案無效，需在 The Boss 中透過匯出至行動裝置取得",
         "title": "備份失敗"
       },
       "cause": "原因",
@@ -553,7 +553,7 @@
           "scan_qr_code": {
             "connecting": "正在連接...",
             "connection_error_message": "連線失敗，請檢查區域網路狀態並重新掃描 QR Code。",
-            "description": "從Cherry Studio掃描QR碼",
+            "description": "從 The Boss 掃描 QR 碼",
             "disconnected_message": "Landrop 連線已斷開，請重試。",
             "disconnected_title": "連線已斷開",
             "grant_permission": "授與權限",
@@ -961,7 +961,7 @@
       "error": "語音識別出錯",
       "not_available": "語音識別不可用",
       "permission_denied": "麥克風權限被拒絕",
-      "permission_denied_message": "請在設定中允許 Cherry Studio 存取麥克風",
+      "permission_denied_message": "請在設定中允許 The Boss 存取麥克風",
       "start": "開始語音輸入",
       "stop": "停止語音輸入"
     }

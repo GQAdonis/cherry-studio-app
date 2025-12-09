@@ -55,7 +55,7 @@ export default function AboutScreen() {
                   overflow: 'hidden'
                 }}
                 cornerSmoothing={0.6}>
-                <Image className="h-full w-full" source={require('@/assets/images/favicon.png')} />
+                <Image className="h-full w-full" source={require('@/assets/images/logo.png')} />
               </FastSquircleView>
               <YStack className="flex-1 gap-[5px] py-1">
                 <Text className="text-[22px] font-bold">{t('common.cherry_studio')}</Text>

@@ -1,6 +1,12 @@
 import structuredClone from '@ungap/structured-clone'
 import { Platform } from 'react-native'
 
+// Install crypto polyfill first (must be before other imports)
+if (Platform.OS !== 'web') {
+  // Install react-native-quick-crypto polyfill
+  require('react-native-quick-crypto')
+}
+
 if (Platform.OS !== 'web') {
   const setupPolyfills = async () => {
     const { polyfillGlobal } = await import('react-native/Libraries/Utilities/PolyfillFunctions')

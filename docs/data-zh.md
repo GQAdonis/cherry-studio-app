@@ -1,6 +1,6 @@
 # 数据结构文档
 
-本文档全面概述了 Cherry Studio App 中使用的数据结构，按存储类型组织。
+本文档全面概述了 The Boss App 中使用的数据结构，按存储类型组织。
 
 ## 目录
 
@@ -19,7 +19,7 @@
 
 ## Preference 系统（偏好设置）
 
-Cherry Studio 使用基于 SQLite 的 PreferenceService 管理所有用户配置和应用状态。这是一个高性能、类型安全的解决方案，取代了部分 Redux store。
+The Boss 使用基于 SQLite 的 PreferenceService 管理所有用户配置和应用状态。这是一个高性能、类型安全的解决方案，取代了部分 Redux store。
 
 ### 架构概述
 
@@ -114,7 +114,7 @@ CREATE TABLE preference (
 **默认值：**
 
 - `user.avatar`: `''` (空字符串)
-- `user.name`: `'Cherry Studio'`
+- `user.name`: `'The Boss'`
 - `user.id`: 自动生成 UUID
 
 #### UI 配置（UI Configuration）
@@ -343,7 +343,7 @@ export type PreferenceKeyType = keyof PreferenceSchemas['default']
 
 ## Topic 系统（对话话题管理）
 
-Cherry Studio 使用 TopicService 管理所有对话话题（topics），采用与 PreferenceService 类似的架构设计，提供高性能、类型安全的话题管理解决方案。
+The Boss 使用 TopicService 管理所有对话话题（topics），采用与 PreferenceService 类似的架构设计，提供高性能、类型安全的话题管理解决方案。
 
 ### 架构概述
 
@@ -796,7 +796,7 @@ renameTopic('新名称').catch(console.error)
 
 ## Assistant 系统（AI 助手管理）
 
-Cherry Studio 使用 AssistantService 管理所有 AI 助手配置，采用与 TopicService 相同的架构设计，提供高性能、类型安全的助手管理解决方案。
+The Boss 使用 AssistantService 管理所有 AI 助手配置，采用与 TopicService 相同的架构设计，提供高性能、类型安全的助手管理解决方案。
 
 ### 架构概述
 
@@ -1194,7 +1194,7 @@ updateAssistant({ name: '新名称' }).catch(console.error)
 
 ## Provider 系统（LLM 服务提供商管理）
 
-Cherry Studio 使用 ProviderService 管理所有 LLM 服务提供商配置（OpenAI、Anthropic、Google 等），采用与 AssistantService 类似的架构设计，提供高性能、类型安全的提供商管理解决方案。
+The Boss 使用 ProviderService 管理所有 LLM 服务提供商配置（OpenAI、Anthropic、Google 等），采用与 AssistantService 类似的架构设计，提供高性能、类型安全的提供商管理解决方案。
 
 ### 架构概述
 
@@ -1750,7 +1750,7 @@ updateProvider({ enabled: true }).catch(console.error)
 
 ## MCP 系统（Model Context Protocol 管理）
 
-Cherry Studio 使用 McpService 管理所有 MCP 服务器配置，采用简化的缓存架构，提供高性能、类型安全的 MCP 管理解决方案。
+The Boss 使用 McpService 管理所有 MCP 服务器配置，采用简化的缓存架构，提供高性能、类型安全的 MCP 管理解决方案。
 
 ### 架构概述
 
@@ -2272,7 +2272,7 @@ updateMcpServer({ isActive: true }).catch(console.error)
 
 ## WebSearch Provider 系统（网页搜索提供商管理）
 
-Cherry Studio 使用 WebSearchProviderService 管理所有网页搜索服务提供商配置（Google、Searxng、Tavily 等），采用与 McpService 相同的架构设计，提供高性能、类型安全的搜索提供商管理解决方案。
+The Boss 使用 WebSearchProviderService 管理所有网页搜索服务提供商配置（Google、Searxng、Tavily 等），采用与 McpService 相同的架构设计，提供高性能、类型安全的搜索提供商管理解决方案。
 
 ### 架构概述
 
@@ -3327,7 +3327,7 @@ const messages = await db
 
 ## 总结
 
-Cherry Studio 采用混合存储策略：
+The Boss 采用混合存储策略：
 
 - **Preference System (SQLite)**: 管理所有用户配置和应用状态（10 项）
 - **Topic System (Service + Cache)**: 管理对话话题，提供三层缓存和乐观更新

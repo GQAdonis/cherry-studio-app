@@ -1,12 +1,13 @@
 import type { ProviderId, ProviderSettingsMap } from '@cherrystudio/ai-core/provider'
 import { hasProviderConfig, ProviderConfigFactory } from '@cherrystudio/ai-core/provider'
 import { fetch } from 'expo/fetch'
-import { cloneDeep } from 'lodash'
+import { cloneDeep, isEmpty } from 'lodash'
 
 import { isOpenAIChatCompletionOnlyModel } from '@/config/models'
 import { isNewApiProvider } from '@/config/providers'
 import { generateSignature } from '@/integration/cherryai'
 import { loggerService } from '@/services/LoggerService'
+import { preferenceService } from '@/services/PreferenceService'
 import { getProviderByModel } from '@/services/ProviderService'
 import { isSystemProvider, type Model, type Provider } from '@/types/assistant'
 import { storage } from '@/utils'
@@ -16,6 +17,46 @@ import { aihubmixProviderCreator, newApiResolverCreator, vertexAnthropicProvider
 import { getAiSdkProviderId } from './factory'
 
 const logger = loggerService.withContext('ProviderConfigProcessor')
+
+/**
+ * Format private key for VertexAI
+ */
+function formatPrivateKey(privateKey: string): string {
+  if (!privateKey) return ''
+  // Ensure proper line breaks
+  return privateKey.replace(/\\n/g, '\n')
+}
+
+/**
+ * Check if VertexAI is properly configured
+ */
+async function isVertexAIConfigured(): Promise<boolean> {
+  const clientEmail = await preferenceService.get('vertexai.service_account.client_email')
+  const privateKey = await preferenceService.get('vertexai.service_account.private_key')
+  const projectId = await preferenceService.get('vertexai.project_id')
+  const location = await preferenceService.get('vertexai.location')
+
+  return !isEmpty(clientEmail) && !isEmpty(privateKey) && !isEmpty(projectId) && !isEmpty(location)
+}
+
+/**
+ * Create VertexAI provider configuration from preferences
+ */
+async function createVertexProvider() {
+  const clientEmail = await preferenceService.get('vertexai.service_account.client_email')
+  const privateKey = await preferenceService.get('vertexai.service_account.private_key')
+  const projectId = await preferenceService.get('vertexai.project_id')
+  const location = await preferenceService.get('vertexai.location')
+
+  return {
+    project: projectId || '',
+    location: location || 'us-central1',
+    googleCredentials: {
+      clientEmail: clientEmail || '',
+      privateKey: privateKey || ''
+    }
+  }
+}
 
 /**
  * 获取轮询的API key
@@ -97,13 +138,13 @@ export function getActualProvider(model: Model): Provider {
  * 将 Provider 配置转换为新 AI SDK 格式
  * 简化版：利用新的别名映射系统
  */
-export function providerToAiSdkConfig(
+export async function providerToAiSdkConfig(
   actualProvider: Provider,
   model: Model
-): {
+): Promise<{
   providerId: ProviderId | 'openai-compatible'
   options: ProviderSettingsMap[keyof ProviderSettingsMap]
-} {
+}> {
   const aiSdkProviderId = getAiSdkProviderId(actualProvider)
   logger.debug('providerToAiSdkConfig', { aiSdkProviderId })
 
@@ -130,7 +171,7 @@ export function providerToAiSdkConfig(
       extraOptions.headers = {
         ...extraOptions.headers,
         'HTTP-Referer': 'https://cherry-ai.com',
-        'X-Title': 'Cherry Studio',
+        'X-Title': 'The Boss',
         'X-Api-Key': baseConfig.apiKey
       }
     }
@@ -168,33 +209,27 @@ export function providerToAiSdkConfig(
 
   // google-vertex
   if (aiSdkProviderId === 'google-vertex' || aiSdkProviderId === 'google-vertex-anthropic') {
-    throw new Error('VertexAI is not configured. ')
-    // if (!isVertexAIConfigured()) {
-    //   throw new Error('VertexAI is not configured. Please configure project, location and service account credentials.')
-    // }
+    const configured = await isVertexAIConfigured()
+    if (!configured) {
+      throw new Error('VertexAI is not configured. Please configure project, location and service account credentials.')
+    }
 
-    // const { project, location, googleCredentials } = createVertexProvider(actualProvider)
-    // extraOptions.project = project
-    // extraOptions.location = location
-    // extraOptions.googleCredentials = {
-    //   ...googleCredentials,
-    //   privateKey: formatPrivateKey(googleCredentials.privateKey)
-    // }
+    const { project, location, googleCredentials } = await createVertexProvider()
+    extraOptions.project = project
+    extraOptions.location = location
+    extraOptions.googleCredentials = {
+      ...googleCredentials,
+      privateKey: formatPrivateKey(googleCredentials.privateKey)
+    }
 
-    // // extraOptions.headers = window.api.vertexAI.getAuthHeaders({
-    // //   projectId: project,
-    // //   serviceAccount: {
-    // //     privateKey: googleCredentials.privateKey,
-    // //     clientEmail: googleCredentials.clientEmail
-    // //   }
-    // // })
-    // if (baseConfig.baseURL.endsWith('/v1/')) {
-    //   baseConfig.baseURL = baseConfig.baseURL.slice(0, -4)
-    // } else if (baseConfig.baseURL.endsWith('/v1')) {
-    //   baseConfig.baseURL = baseConfig.baseURL.slice(0, -3)
-    // }
+    // Clean up baseURL - VertexAI SDK doesn't use /v1 suffix
+    if (baseConfig.baseURL.endsWith('/v1/')) {
+      baseConfig.baseURL = baseConfig.baseURL.slice(0, -4)
+    } else if (baseConfig.baseURL.endsWith('/v1')) {
+      baseConfig.baseURL = baseConfig.baseURL.slice(0, -3)
+    }
 
-    // baseConfig.baseURL = isEmpty(baseConfig.baseURL) ? '' : baseConfig.baseURL
+    baseConfig.baseURL = isEmpty(baseConfig.baseURL) ? '' : baseConfig.baseURL
   }
 
   if (aiSdkProviderId === 'cherryin') {
@@ -228,13 +263,13 @@ export function providerToAiSdkConfig(
  * 检查是否支持使用新的AI SDK
  * 简化版：利用新的别名映射和动态provider系统
  */
-export function isModernSdkSupported(provider: Provider): boolean {
+export async function isModernSdkSupported(provider: Provider): Promise<boolean> {
   // 特殊检查：vertexai需要配置完整
-  // if (provider.type === 'vertexai' && !isVertexAIConfigured()) {
-  //   return false
-  // }
   if (provider.type === 'vertexai') {
-    throw new Error('vertexai provider is not supported')
+    const configured = await isVertexAIConfigured()
+    if (!configured) {
+      return false
+    }
   }
 
   // 使用getAiSdkProviderId获取映射后的providerId，然后检查AI SDK是否支持

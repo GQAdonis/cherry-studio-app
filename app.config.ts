@@ -26,7 +26,7 @@ export default {
       userInterfaceStyle: 'automatic',
       infoPlist: {
         LSApplicationQueriesSchemes: ['shortcuts'],
-        NSSpeechRecognitionUsageDescription: 'Allow Cherry Studio App to use speech recognition for voice input.'
+        NSSpeechRecognitionUsageDescription: 'Allow The Boss to use speech recognition for voice input.'
       }
     },
     android: {
@@ -124,32 +124,32 @@ export default {
       [
         'expo-camera',
         {
-          cameraPermission: 'Allow Cherry Studio App to access your camera',
-          // microphonePermission: 'Allow Cherry Studio App to access your microphone',
+          cameraPermission: 'Allow The Boss to access your camera',
+          // microphonePermission: 'Allow The Boss to access your microphone',
           recordAudioAndroid: true
         }
       ],
       [
         'expo-media-library',
         {
-          photosPermission: 'Allow Cherry Studio App to save images to your photo library.',
-          savePhotosPermission: 'Allow Cherry Studio App to save images to your photo library.',
+          photosPermission: 'Allow The Boss to save images to your photo library.',
+          savePhotosPermission: 'Allow The Boss to save images to your photo library.',
           isAccessMediaLocationEnabled: true
         }
       ],
       [
         'expo-calendar',
         {
-          calendarPermission: 'Allow Cherry Studio App to access your calendar.',
-          remindersPermission: 'Allow Cherry Studio App to access your reminders.'
+          calendarPermission: 'Allow The Boss to access your calendar.',
+          remindersPermission: 'Allow The Boss to access your reminders.'
         }
       ],
       ['react-native-compressor'],
       [
         'expo-speech-recognition',
         {
-          microphonePermission: 'Allow Cherry Studio App to use your microphone for voice input.',
-          speechRecognitionPermission: 'Allow Cherry Studio App to use speech recognition.'
+          microphonePermission: 'Allow The Boss to use your microphone for voice input.',
+          speechRecognitionPermission: 'Allow The Boss to use speech recognition.'
         }
       ],
       [

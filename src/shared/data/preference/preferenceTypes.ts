@@ -30,6 +30,12 @@ export interface PreferenceSchemas {
     'websearch.override_search_service': boolean
     'websearch.content_limit': number | undefined
 
+    // Vertex AI Configuration
+    'vertexai.service_account.client_email': string
+    'vertexai.service_account.private_key': string
+    'vertexai.project_id': string
+    'vertexai.location': string
+
     // App State
     'app.initialization_version': number
     'app.dismissed_update_version': string

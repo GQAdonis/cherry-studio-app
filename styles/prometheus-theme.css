@@ -1,0 +1,102 @@
+/**
+ * Prometheus Agentic Growth Solutions - The Boss Brand Theme
+ * 
+ * This file overrides the semantic color system to apply Prometheus branding
+ * throughout the entire application automatically.
+ */
+
+@theme {
+  /* ==================== */
+  /* Prometheus Brand Color Palette */
+  /* ==================== */
+  --color-prometheus-navy: #0a192d;
+  --color-prometheus-yellow: #ffdd00;
+  --color-prometheus-orange: #ff5500;
+  --color-prometheus-red: #ff4d4d;
+  --color-prometheus-turquoise: #00a3a3;
+  --color-prometheus-light-blue: #4d9fff;
+  --color-prometheus-lavender: #9d8df1;
+  --color-prometheus-ultra-light-gray: #f8f8f8;
+  --color-prometheus-light-gray: #f5f5f5;
+  --color-prometheus-medium-gray: #cccccc;
+  --color-prometheus-dark-gray: #333333;
+  --color-prometheus-light-navy: #0f2440;
+  
+  /* Typography */
+  --font-family-heading: 'Ubuntu', 'Inter', sans-serif;
+  --font-family-body: 'Roboto', 'Inter', sans-serif;
+
+  /* ==================== */
+  /* Override Semantic Colors with Prometheus Branding */
+  /* ==================== */
+  
+  /* Primary color - Used for main actions, highlights */
+  --color-primary: oklch(from #0a192d l c h);
+  --color-primary-hover: oklch(from #0f2440 l c h);
+  
+  /* Accent color - Used for links, secondary actions */
+  --color-accent: oklch(from #00a3a3 l c h);
+  
+  /* Destructive/Error color */
+  --color-destructive: oklch(from #ff4d4d l c h);
+  --color-destructive-hover: oklch(from #ff3333 l c h);
+  
+  /* Brand color scale - Override with Prometheus Navy */
+  --color-brand-50: oklch(0.98 0.015 214);
+  --color-brand-100: oklch(0.96 0.034 214);
+  --color-brand-200: oklch(0.91 0.073 214);
+  --color-brand-300: oklch(from #4d9fff l c h);
+  --color-brand-400: oklch(from #00a3a3 l c h);
+  --color-brand-500: oklch(from #0a192d l c h);
+  --color-brand-600: oklch(from #0f2440 l c h);
+  --color-brand-700: oklch(0.20 0.040 214);
+  --color-brand-800: oklch(0.15 0.035 214);
+  --color-brand-900: oklch(0.12 0.030 214);
+  --color-brand-950: oklch(0.08 0.025 214);
+}
+
+@layer theme {
+  :root {
+    @variant light {
+      /* Primary - Prometheus Navy */
+      --color-primary: oklch(from #0a192d l c h);
+      --color-primary-hover: oklch(from #0f2440 l c h);
+      
+      /* Accent - Prometheus Turquoise */
+      --color-accent: oklch(from #00a3a3 l c h);
+      
+      /* Backgrounds - Prometheus Light Grays */
+      --color-background: oklch(from #f8f8f8 l c h);
+      --color-card: oklch(from #f5f5f5 l c h);
+      
+      /* Borders - Prometheus Medium Gray */
+      --color-border: oklch(from #cccccc l c h / 0.3);
+      --color-border-hover: oklch(from #cccccc l c h / 0.5);
+      
+      /* Brand colors for components */
+      --color-brand-500: oklch(from #0a192d l c h);
+      --color-brand-300: oklch(from #00a3a3 l c h);
+    }
+
+    @variant dark {
+      /* Primary - Prometheus Light Blue (better for dark mode) */
+      --color-primary: oklch(from #4d9fff l c h);
+      --color-primary-hover: oklch(from #3a8fff l c h);
+      
+      /* Accent - Prometheus Turquoise */
+      --color-accent: oklch(from #00a3a3 l c h);
+      
+      /* Backgrounds - Prometheus Navy shades */
+      --color-background: oklch(from #0a192d l c h);
+      --color-card: oklch(from #0f2440 l c h);
+      
+      /* Borders - Prometheus Dark Gray */
+      --color-border: oklch(from #333333 l c h / 0.3);
+      --color-border-hover: oklch(from #333333 l c h / 0.5);
+      
+      /* Brand colors for components */
+      --color-brand-500: oklch(from #4d9fff l c h);
+      --color-brand-300: oklch(from #00a3a3 l c h);
+    }
+  }
+}

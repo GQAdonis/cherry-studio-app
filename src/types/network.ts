@@ -8,7 +8,7 @@ export interface ConnectionInfo {
 
 // Compressed connection data format for QR codes
 export type CompressedConnectionInfo = [
-  'CSA', // Magic identifier for Cherry Studio App
+  'CSA', // Magic identifier for The Boss App
   number, // Selected IP as number
   number[], // Candidate IPs as numbers
   number, // Port number

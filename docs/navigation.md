@@ -1,8 +1,8 @@
-# Cherry Studio 导航架构文档
+# The Boss 导航架构文档
 
 ## 导航架构概览
 
-Cherry Studio 采用层次化的导航结构，基于 React Navigation v7 构建，主要分为四个层级：
+The Boss 采用层次化的导航结构，基于 React Navigation v7 构建，主要分为四个层级：
 
 1. **根导航层**：MainStackNavigator（应用入口）
 2. **主抽屉导航层**：AppDrawerNavigator（侧边栏导航）
@@ -189,4 +189,4 @@ ProvidersStackNavigator
 3. **保持导航一致性**：所有同级导航器使用相同的过渡动画和配置
 4. **合理的参数设计**：导航参数应该简洁且必要，避免传递复杂对象
 
-这种层次化的导航架构为 Cherry Studio 提供了清晰的信息架构和流畅的用户体验，同时保证了代码的可维护性和扩展性。
+这种层次化的导航架构为 The Boss 提供了清晰的信息架构和流畅的用户体验，同时保证了代码的可维护性和扩展性。

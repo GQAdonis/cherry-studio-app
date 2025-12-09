@@ -43,8 +43,8 @@ export type ModernAiProviderConfig = AiSdkMiddlewareConfig & {
 }
 
 export default class ModernAiProvider {
-  private legacyProvider: LegacyAiProvider
-  private config?: ReturnType<typeof providerToAiSdkConfig>
+  private legacyProvider: LegacyAiProvider | null
+  private config?: Awaited<ReturnType<typeof providerToAiSdkConfig>>
   private actualProvider: Provider
   private model?: Model
   private localProvider: Awaited<AiSdkProvider> | null = null
@@ -59,15 +59,22 @@ export default class ModernAiProvider {
       // 传入的是 Model
       this.model = modelOrProvider
       this.actualProvider = provider || getActualProvider(modelOrProvider)
-      // 只保存配置，不预先创建executor
-      this.config = providerToAiSdkConfig(this.actualProvider, modelOrProvider)
+      // Config will be initialized asynchronously in methods that need it
     } else {
       // 传入的是 Provider
       this.actualProvider = modelOrProvider
       // model为可选，某些操作（如fetchModels）不需要model
     }
 
-    this.legacyProvider = new LegacyAiProvider(this.actualProvider)
+    // For providers that only support modern SDK (like VertexAI), skip legacy provider creation
+    try {
+      this.legacyProvider = new LegacyAiProvider(this.actualProvider)
+    } catch (error) {
+      // If legacy provider creation fails (e.g., for VertexAI), we'll only use modern SDK
+      logger.debug('Legacy provider creation failed, will use modern SDK only', { error })
+      // Create a minimal legacy provider that throws errors if used
+      this.legacyProvider = null as any
+    }
 
     this.customFetch = async (url, options) => {
       const response = await expoFetch(url, {
@@ -99,7 +106,7 @@ export default class ModernAiProvider {
     }
 
     // 确保配置存在
-    this.config = providerToAiSdkConfig(this.actualProvider, this.model)
+    this.config = await providerToAiSdkConfig(this.actualProvider, this.model)
     this.applyCustomFetchToConfig()
     if (SUPPORTED_IMAGE_ENDPOINT_LIST.includes(this.config.options.endpoint)) {
       providerConfig.isImageGenerationEndpoint = true
@@ -174,6 +181,9 @@ export default class ModernAiProvider {
       }
 
       // 调用 legacy 的 completions，会自动使用 ImageGenerationMiddleware
+      if (!this.legacyProvider) {
+        throw new Error('Image generation not supported for this provider yet')
+      }
       return await this.legacyProvider.completions(legacyParams)
     }
 
@@ -460,16 +470,22 @@ export default class ModernAiProvider {
       }
       return formatModel((await gateway.getAvailableModels()).models)
     }
+    if (!this.legacyProvider) {
+      throw new Error('Models listing not supported for this provider yet')
+    }
     return this.legacyProvider.models()
   }
 
   public async getEmbeddingDimensions(model: Model): Promise<number> {
+    if (!this.legacyProvider) {
+      throw new Error('Embeddings not supported for this provider yet')
+    }
     return this.legacyProvider.getEmbeddingDimensions(model)
   }
 
   public async generateImage(params: GenerateImageParams): Promise<string[]> {
     // 如果支持新的 AI SDK，使用现代化实现
-    if (isModernSdkSupported(this.actualProvider)) {
+    if (await isModernSdkSupported(this.actualProvider)) {
       try {
         // 确保本地provider已创建
         if (!this.localProvider) {
@@ -485,11 +501,17 @@ export default class ModernAiProvider {
       } catch (error) {
         logger.warn('Modern AI SDK generateImage failed, falling back to legacy:', error as Error)
         // fallback 到传统实现
+        if (!this.legacyProvider) {
+          throw error
+        }
         return this.legacyProvider.generateImage(params)
       }
     }
 
     // 直接使用传统实现
+    if (!this.legacyProvider) {
+      throw new Error('Image generation not supported for this provider yet')
+    }
     return this.legacyProvider.generateImage(params)
   }
 
@@ -528,10 +550,16 @@ export default class ModernAiProvider {
   }
 
   public getBaseURL(): string {
+    if (!this.legacyProvider) {
+      return this.actualProvider.apiHost || ''
+    }
     return this.legacyProvider.getBaseURL()
   }
 
   public getApiKey(): string {
+    if (!this.legacyProvider) {
+      return this.actualProvider.apiKey || ''
+    }
     return this.legacyProvider.getApiKey()
   }
 

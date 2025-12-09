@@ -793,7 +793,25 @@
         "not_found_message": "There is an error navigate to the provider page.",
         "provider_deleted": "Provider deleted",
         "search": "Search Providers...",
-        "title": "Model Provider"
+        "title": "Model Provider",
+        "vertex_ai": {
+          "api_host_help": "The API host for Vertex AI, not recommended to fill in, generally applicable to reverse proxy",
+          "service_account": {
+            "title": "Service Account Configuration",
+            "description": "Use Service Account for authentication, suitable for environments where ADC is not available",
+            "client_email": "Client Email",
+            "client_email_placeholder": "Enter the client_email from your JSON key file",
+            "client_email_help": "The client_email field from the JSON key file downloaded from Google Cloud Console",
+            "private_key": "Private Key",
+            "private_key_placeholder": "Enter the private_key from your JSON key file",
+            "private_key_help": "The private_key field from the JSON key file downloaded from Google Cloud Console"
+          },
+          "project_id": "Project ID",
+          "project_id_placeholder": "Enter your Google Cloud project ID",
+          "project_id_help": "Your Google Cloud project ID",
+          "location": "Location",
+          "location_help": "Vertex AI service location, e.g., us-central1"
+        }
       },
       "proxy": {
         "title": "Proxy Address"
