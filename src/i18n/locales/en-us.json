@@ -105,7 +105,7 @@
       },
       "think": "Thinking for {{seconds}} seconds",
       "think_expand": "Tap to read my mind",
-      "title": "Welcome to Cherry Studio!",
+      "title": "Welcome to The Boss!",
       "topics": {
         "list": "List",
         "search": {
@@ -120,8 +120,8 @@
       "camera": "Camera",
       "cancel": "Cancel",
       "check": "Check",
-      "cherry_studio": "Cherry Studio",
-      "cherry_studio_description": "A Powerful AI assistant for producer",
+      "cherry_studio": "The Boss",
+      "cherry_studio_description": "A Powerful AI assistant for producers",
       "clear_all": "Clear All",
       "close": "Close",
       "confirm": "Confirm",
@@ -137,7 +137,7 @@
       "file": "File",
       "generateImage": "Create an image",
       "go_to_settings": "Settings",
-      "import_from_cherry_studio": "Import from Cherry Studio",
+      "import_from_cherry_studio": "Import from The Boss",
       "language": "Language",
       "last_month": "Last Month",
       "last_week": "Last Week",
@@ -162,7 +162,7 @@
       "select_all": "Select All",
       "select_text": "Select Text",
       "source": "Source",
-      "start": "Get Started with Cherry Studio 🎉",
+      "start": "Get Started with The Boss 🎉",
       "stop": "Stop",
       "this_week": "This Week",
       "today": "Today",
@@ -171,7 +171,7 @@
       "visit": "Visit",
       "websearch": "Web Search",
       "welcome": {
-        "message1": "Welcome to Cherry Studio 🎉",
+        "message1": "Welcome to The Boss 🎉",
         "message2": "Start creating and enjoying"
       },
       "yesterday": "Yesterday"
@@ -181,7 +181,7 @@
       "availableTools": "Available Tools",
       "backup": {
         "file_format": "Backup file format error",
-        "file_invalid": "The backup file is invalid. You need to export it to a mobile device through Cherry Studio.",
+        "file_invalid": "The backup file is invalid. You need to export it to a mobile device through The Boss.",
         "title": "Backup failed"
       },
       "cause": "Cause",
@@ -553,7 +553,7 @@
           "scan_qr_code": {
             "connecting": "Connecting...",
             "connection_error_message": "Unable to connect. Please check your LAN and scan the QR code again.",
-            "description": "Scan QR Code from Cherry Studio",
+            "description": "Scan QR Code from The Boss",
             "disconnected_message": "The Landrop connection was disconnected. Please try again.",
             "disconnected_title": "Connection Lost",
             "grant_permission": "Grant Permission",
@@ -961,7 +961,7 @@
       "error": "Speech recognition error",
       "not_available": "Speech recognition is not available",
       "permission_denied": "Microphone permission denied",
-      "permission_denied_message": "Please allow Cherry Studio to access your microphone in Settings",
+      "permission_denied_message": "Please allow The Boss to access your microphone in Settings",
       "start": "Start voice input",
       "stop": "Stop voice input"
     }

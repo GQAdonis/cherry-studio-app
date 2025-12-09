@@ -26,7 +26,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture Overview
 
-Cherry Studio is a React Native/Expo AI chat application with clean architecture principles:
+The Boss is a React Native/Expo AI chat application with clean architecture principles:
 
 ### Data Layer
 

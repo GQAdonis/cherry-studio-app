@@ -7,25 +7,22 @@ const appVersion = packageJson.version
 
 export default {
   expo: {
-    name: 'Cherry Studio',
-    slug: 'cherry-studio',
+    name: 'The Boss',
+    slug: 'the-boss',
     version: appVersion,
     // orientation: 'portrait', 锁定竖屏
     orientation: 'default',
-    icon: './src/assets/images/favicon.png',
-    scheme: 'cherry-studio',
+    icon: './docs/branding/logo.png',
+    scheme: 'the-boss',
     userInterfaceStyle: 'automatic',
     newArchEnabled: true,
     entryPoint: './src/app.js',
-    updates: {
-      url: 'https://u.expo.dev/80096eaf-3ad0-4b87-a466-15f04da1bacc'
-    },
     runtimeVersion: {
       policy: 'appVersion'
     },
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'com.cherry-ai.cherry-studio-app',
+      bundleIdentifier: 'ai.prometheusags.theboss',
       userInterfaceStyle: 'automatic',
       infoPlist: {
         LSApplicationQueriesSchemes: ['shortcuts'],
@@ -34,11 +31,11 @@ export default {
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: './src/assets/images/adaptive-icon.png',
-        backgroundColor: '#F65D5D'
+        foregroundImage: './src/assets/images/logo.png',
+        backgroundColor: '#0A192D'
       },
       edgeToEdgeEnabled: true,
-      package: 'com.cherry_ai.cherry_studio_app',
+      package: 'ai.prometheusags.theboss',
       userInterfaceStyle: 'automatic',
       predictiveBackGestureEnabled: false
     },
@@ -62,33 +59,33 @@ export default {
       [
         'expo-splash-screen',
         {
-          image: './src/assets/images/ios-splash-icon.png',
+          image: './src/assets/images/logo.png',
           imageWidth: 144,
           resizeMode: 'contain',
-          backgroundColor: '#ffffff',
+          backgroundColor: '#0A192D',
           dark: {
-            image: './src/assets/images/ios-splash-icon.png',
-            backgroundColor: '#000000'
+            image: './src/assets/images/logo.png',
+            backgroundColor: '#0A192D'
           },
           ios: {
             splash: {
-              image: './src/assets/images/ios-splash-icon.png',
-              backgroundColor: '#ffffff',
+              image: './src/assets/images/logo.png',
+              backgroundColor: '#0A192D',
               resizeMode: 'contain',
               dark: {
-                image: './src/assets/images/ios-splash-icon.png',
-                backgroundColor: '#000000'
+                image: './src/assets/images/logo.png',
+                backgroundColor: '#0A192D'
               }
             }
           },
           android: {
             splash: {
-              image: './src/assets/images/ios-splash-icon.png',
-              backgroundColor: '#ffffff',
+              image: './src/assets/images/logo.png',
+              backgroundColor: '#0A192D',
               resizeMode: 'contain',
               dark: {
-                image: './src/assets/images/ios-splash-icon.png',
-                backgroundColor: '#000000'
+                image: './src/assets/images/logo.png',
+                backgroundColor: '#0A192D'
               }
             }
           }
@@ -99,7 +96,15 @@ export default {
       [
         'expo-font',
         {
-          fonts: ['./src/assets/fonts/JetBrainsMono-Regular.ttf']
+          fonts: [
+            './src/assets/fonts/JetBrainsMono-Regular.ttf',
+            './src/assets/fonts/prometheus/Roboto-Regular.ttf',
+            './src/assets/fonts/prometheus/Roboto-Medium.ttf',
+            './src/assets/fonts/prometheus/Roboto-Bold.ttf',
+            './src/assets/fonts/prometheus/Ubuntu-Regular.ttf',
+            './src/assets/fonts/prometheus/Ubuntu-Medium.ttf',
+            './src/assets/fonts/prometheus/Ubuntu-Bold.ttf'
+          ]
         }
       ],
       'expo-web-browser',
@@ -173,7 +178,7 @@ export default {
     },
     extra: {
       eas: {
-        projectId: '80096eaf-3ad0-4b87-a466-15f04da1bacc'
+        projectId: 'e14a954a-c7a1-429c-8a75-17ac77359b90'
       },
       appVersion
     }

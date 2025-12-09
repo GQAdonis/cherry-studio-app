@@ -1,8 +1,8 @@
-# 🍒 Welcome to Cherry Studio App
+# 🎯 Welcome to The Boss App
 
 English | [中文](./README-zh.md)
 
-🍒 Cherry Studio App —— The official mobile version of Cherry Studio, bringing powerful LLMs (Large Language Models) interaction to your iOS and Android devices.
+🎯 The Boss App —— The official mobile version of Prometheus Agentic Growth Solutions, bringing powerful LLMs (Large Language Models) interaction to your iOS and Android devices.
 
 🌟 **Support the Project:** [Sponsor](https://github.com/CherryHQ/cherry-studio/blob/main/docs/sponsor.md) | Give the repo a Star!
 
