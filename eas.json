@@ -24,7 +24,19 @@
       "android": {
         "buildType": "apk"
       },
-      "ios": {}
+      "ios": {
+        "resourceClass": "m-medium"
+      }
+    },
+    "testflight": {
+      "distribution": "store",
+      "autoIncrement": true,
+      "env": {
+        "PROFILE": "production"
+      },
+      "ios": {
+        "resourceClass": "m-medium"
+      }
     },
     "production": {
       "autoIncrement": true,

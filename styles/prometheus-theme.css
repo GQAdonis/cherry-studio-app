@@ -56,29 +56,31 @@
 }
 
 @layer theme {
+  /* Light mode (default) */
   :root {
-    @variant light {
-      /* Primary - Prometheus Navy */
-      --color-primary: oklch(from #0a192d l c h);
-      --color-primary-hover: oklch(from #0f2440 l c h);
-      
-      /* Accent - Prometheus Turquoise */
-      --color-accent: oklch(from #00a3a3 l c h);
-      
-      /* Backgrounds - Prometheus Light Grays */
-      --color-background: oklch(from #f8f8f8 l c h);
-      --color-card: oklch(from #f5f5f5 l c h);
-      
-      /* Borders - Prometheus Medium Gray */
-      --color-border: oklch(from #cccccc l c h / 0.3);
-      --color-border-hover: oklch(from #cccccc l c h / 0.5);
-      
-      /* Brand colors for components */
-      --color-brand-500: oklch(from #0a192d l c h);
-      --color-brand-300: oklch(from #00a3a3 l c h);
-    }
+    /* Primary - Prometheus Navy */
+    --color-primary: oklch(from #0a192d l c h);
+    --color-primary-hover: oklch(from #0f2440 l c h);
+    
+    /* Accent - Prometheus Turquoise */
+    --color-accent: oklch(from #00a3a3 l c h);
+    
+    /* Backgrounds - Prometheus Light Grays */
+    --color-background: oklch(from #f8f8f8 l c h);
+    --color-card: oklch(from #f5f5f5 l c h);
+    
+    /* Borders - Prometheus Medium Gray */
+    --color-border: oklch(from #cccccc l c h / 0.3);
+    --color-border-hover: oklch(from #cccccc l c h / 0.5);
+    
+    /* Brand colors for components */
+    --color-brand-500: oklch(from #0a192d l c h);
+    --color-brand-300: oklch(from #00a3a3 l c h);
+  }
 
-    @variant dark {
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
       /* Primary - Prometheus Light Blue (better for dark mode) */
       --color-primary: oklch(from #4d9fff l c h);
       --color-primary-hover: oklch(from #3a8fff l c h);
@@ -98,5 +100,27 @@
       --color-brand-500: oklch(from #4d9fff l c h);
       --color-brand-300: oklch(from #00a3a3 l c h);
     }
+  }
+
+  /* Manual dark class override */
+  .dark {
+    /* Primary - Prometheus Light Blue (better for dark mode) */
+    --color-primary: oklch(from #4d9fff l c h);
+    --color-primary-hover: oklch(from #3a8fff l c h);
+    
+    /* Accent - Prometheus Turquoise */
+    --color-accent: oklch(from #00a3a3 l c h);
+    
+    /* Backgrounds - Prometheus Navy shades */
+    --color-background: oklch(from #0a192d l c h);
+    --color-card: oklch(from #0f2440 l c h);
+    
+    /* Borders - Prometheus Dark Gray */
+    --color-border: oklch(from #333333 l c h / 0.3);
+    --color-border-hover: oklch(from #333333 l c h / 0.5);
+    
+    /* Brand colors for components */
+    --color-brand-500: oklch(from #4d9fff l c h);
+    --color-brand-300: oklch(from #00a3a3 l c h);
   }
 }

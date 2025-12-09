@@ -21,12 +21,14 @@ export default {
       policy: 'appVersion'
     },
     ios: {
+      deploymentTarget: '16.0',
       supportsTablet: true,
       bundleIdentifier: 'ai.prometheusags.theboss',
       userInterfaceStyle: 'automatic',
       infoPlist: {
         LSApplicationQueriesSchemes: ['shortcuts'],
-        NSSpeechRecognitionUsageDescription: 'Allow The Boss to use speech recognition for voice input.'
+        NSSpeechRecognitionUsageDescription: 'Allow The Boss to use speech recognition for voice input.',
+        ITSAppUsesNonExemptEncryption: false
       }
     },
     android: {
@@ -43,7 +45,7 @@ export default {
       [
         'expo-build-properties',
         {
-          ios: { deploymentTarget: '15.5' },
+          ios: { deploymentTarget: '16.0' },
           android: {
             buildToolsVersion: '35.0.0',
             compileSdkVersion: 35,
